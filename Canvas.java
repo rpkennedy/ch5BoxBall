@@ -36,9 +36,9 @@ public class Canvas
      * @param width  the desired width for the canvas
      * @param height  the desired height for the canvas
      */
-    public Canvas(String title, int width, int height)
+    public Canvas()
     {
-        this(title, width, height, Color.white);
+        this("Default", 500, 500, Color.white);
     }
 
     /**
@@ -110,6 +110,10 @@ public class Canvas
     {
         graphic.fill(shape);
         canvas.repaint();
+    }
+    
+    public void getHeight(){
+        System.out.println(canvas.getHeight());
     }
 
     /**
