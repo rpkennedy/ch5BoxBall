@@ -25,9 +25,9 @@ public class Canvas
      * (300, 300, white).
      * @param title  title to appear in Canvas Frame     
      */
-    public Canvas(String title)
+    public Canvas(int x,int y)
     {
-        this(title, 300, 300, Color.white);
+        this("", x, y, Color.white);
     }
 
     /**
@@ -112,8 +112,8 @@ public class Canvas
         canvas.repaint();
     }
     
-    public void getHeight(){
-        System.out.println(canvas.getHeight());
+    public int getHeight(){
+        return canvas.getHeight();
     }
 
     /**
@@ -334,7 +334,11 @@ public class Canvas
     {
         return canvas.getSize();
     }
-
+    
+    public int getWidth(){
+        return canvas.getWidth();
+    }
+    
     /**
      * Waits for a specified number of milliseconds before finishing.
      * This provides an easy way to specify a small delay which can be
@@ -352,7 +356,7 @@ public class Canvas
             // ignoring exception at the moment
         }
     }
-
+    
     /************************************************************************
      * Inner class CanvasPane - the actual canvas component contained in the
      * Canvas frame. This is essentially a JPanel with added capability to

@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.geom.*;
-
+import java.util.Random;
+import java.awt.Component;
+import java.awt.Color;
 /**
  * @author Ryan Kennedy
  * @version 10.14.2019
@@ -20,10 +22,10 @@ public class BoxBall
     private int groundPosition;
     private int wallPosition; //x value of wall
     private Canvas canvas;
-
+    private Random rand;
 
     /**
-     * Constructor for objects of class BouncingBall
+     * Constructor for objects of class BoxBall
      *
      * @param xPos  the horizontal coordinate of the ball
      * @param yPos  the vertical coordinate of the ball
@@ -55,6 +57,26 @@ public class BoxBall
         this.yVel = yVel;
         color = Color.RED;
     }
+    
+    public BoxBall(Canvas drawingCanvas){
+        rand = new Random();
+        canvas = drawingCanvas;
+        diameter = 10 + rand.nextInt(15);
+        xPosition = rand.nextInt((canvas.getWidth())-diameter);
+        yPosition = rand.nextInt((canvas.getHeight())-diameter);
+        if (rand.nextInt(8)%2==0)
+        xVel = 1 + rand.nextInt(6);
+        else
+        xVel = -1 - rand.nextInt(6);
+        if (rand.nextInt(8)%2==0)
+        yVel = 1 + rand.nextInt(6);
+        else
+        yVel = -1 - rand.nextInt(6);
+        groundPosition = canvas.getHeight();
+        wallPosition = canvas.getWidth();
+        color = new Color(rand.nextInt(200), 
+            rand.nextInt(200), rand.nextInt(200));
+    }
 
     /**
      * Draw this ball at its current position onto the canvas.
@@ -80,7 +102,9 @@ public class BoxBall
     {
         // remove from canvas at the current position
         erase();
-            
+        if(color.getRed() > 200 || color.getGreen() > 200 ||
+            color.getBlue() > 200)
+            this.color = new Color(0,0,0);
         
         // compute new position
         xPosition += xVel;
@@ -88,18 +112,19 @@ public class BoxBall
         
         // check ground/ceiling hit
         if(yPosition >= (groundPosition - diameter)) {
-            yPosition = (int)(0);
             yVel = (-1)*yVel; }
+            
         if(yPosition <= diameter) {
-            yPosition = (int)(groundPosition - diameter);
+            yPosition = diameter;
             yVel = (-1)*yVel; }
             
         // check wall hit     
         if(xPosition >= (wallPosition - diameter)) {
-            xPosition = (int)(wallPosition - diameter);
+            //xPosition = (int)(wallPosition - diameter);
             xVel = (-1)*xVel; }
+            
         if(xPosition <= diameter) {
-            xPosition = (int)(0);
+            xPosition = diameter;
             xVel = (-1)*xVel; }
             
         // draw again at new position

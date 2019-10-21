@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=boxBounce
+comment0.text=\r\n\ Write\ a\ description\ of\ class\ player\ here.\r\n\r\n\ @author\ (your\ name)\r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment1.params=
+comment1.target=boxBounce()
+comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ player\r\n
+comment2.params=n\ canvas
+comment2.target=void\ spawn(int,\ Canvas)
+comment2.text=\r\n\ Method\ for\ spawning\ desired\ amount\ of\ random\ balls\r\n\ @param\ balls\ How\ many\ balls\ to\ create\r\n\ @param\ canvas\ What\ canvas\ should\ the\ balls\ be\ created\r\n\ onto\r\n
+comment3.params=iterations
+comment3.target=void\ goCrazy(int)
+comment3.text=\r\n\ An\ example\ of\ a\ method\ -\ replace\ this\ comment\ with\ your\ own\r\n\r\n\ @param\ \ iterations\ \ How\ many\ times\ the\ balls\ are\ updated\r\n
+numComments=4
